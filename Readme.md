@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм (простой)»
 
 * Студент: [Валерий Комиссаров](https://up.htmlacademy.ru/javascript/27/user/1925077).
-* Наставник: `Неизвестно`.
+* Наставник: [Arthur Litovko](https://htmlacademy.ru/profile/id6927).
 
 ---
 
