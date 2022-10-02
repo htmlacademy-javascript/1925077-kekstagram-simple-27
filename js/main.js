@@ -1,4 +1,3 @@
-const MIN_LENGTH_OF_COMMENT = 20;
 const MAX_LENGTH_OF_COMMENT = 140;
 const length140 = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti nemo esse inventore corporis quod aliquid fugit! Possimus laudantium odit';
 
