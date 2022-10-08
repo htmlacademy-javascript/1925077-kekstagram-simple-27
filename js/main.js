@@ -5,25 +5,21 @@ const TEST_STRING = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. C
 /**
  * Функция, возвращающая случайное целое число из переданного диапазона
  * source: https://learn.javascript.ru/task/random-int-min-max
- * @param {number} min
- * @param {number} max
+ * @param {number} from
+ * @param {number} to
  * @returns {number}
  */
-const getRandomOnlyPositiveInt = (min = 0, max = 8) => {
-  if ((min < 0 || max < 0)
-  || (typeof min !== 'number')
-  || (typeof max !== 'number')) {
+const getRandomOnlyPositiveInt = (from = 0, to = 8) => {
+  if ((from < 0 || to < 0)
+  || (typeof from !== 'number')
+  || (typeof to !== 'number')) {
     return NaN;
   }
 
-  if (max < min) {
-    [min, max] = [max, min];
-  }
+  from = Math.ceil(Math.min(from, to));
+  to = Math.floor(Math.min(from, to));
 
-  min = Math.round(min);
-  max = Math.round(max);
-
-  const rand = min - 0.5 + Math.random() * (max - min + 1);
+  const rand = from - 0.5 + Math.random() * (to - from + 1);
   return Math.round(Math.abs(rand));
 };
 
