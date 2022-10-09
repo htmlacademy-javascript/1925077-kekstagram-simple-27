@@ -17,10 +17,10 @@ const getRandomOnlyPositiveInt = (from = 0, to = 8) => {
   }
 
   from = Math.ceil(Math.min(from, to));
-  to = Math.floor(Math.min(from, to));
+  to = Math.floor(Math.max(from, to));
 
-  const rand = from - 0.5 + Math.random() * (to - from + 1);
-  return Math.round(Math.abs(rand));
+  const rand = from + Math.random() * (to + 1 - from);
+  return Math.round(rand);
 };
 
 
