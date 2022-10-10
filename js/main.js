@@ -13,6 +13,10 @@ const DESCRIPTIONS = [
   'Подтверждено: обучение кадров — приоритетная задача',
   'Chocolate covered crickets were his favorite snack.',
 ];
+const MIN_LIKES = 15;
+const MAX_LIKES = 200;
+const MIN_COMMENTS = 0;
+const MAX_COMMENTS = 200;
 
 
 /**
@@ -82,16 +86,15 @@ const shuffle = (array) => {
  * @returns Возвращает массив объектов с данными к фото
  */
 const createArrayDataOfPhotos = (amount, descriptions) => {
-  const identifiers = createArrayOfNumbers(amount);
   const urls = shuffle(createArrayOfNumbers(amount));
   const data = [];
   for (let i = 0; i < amount; i++) {
     const dataOfaPhoto = {
-      id: identifiers[i],
+      id: i + 1,
       url: `photos/${urls[i]}.jpg`,
       description: descriptions[getRandomOnlyPositiveInt(0, descriptions.length - 1)],
-      likes: getRandomOnlyPositiveInt(15, 200),
-      comments:getRandomOnlyPositiveInt(0, 200),
+      likes: getRandomOnlyPositiveInt(MIN_LIKES, MAX_LIKES),
+      comments:getRandomOnlyPositiveInt(MIN_COMMENTS, MAX_COMMENTS),
     };
     data[i] = dataOfaPhoto;
   }
