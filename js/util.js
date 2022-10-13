@@ -1,6 +1,6 @@
 /**
  * Функция, возвращающая случайное целое число из переданного диапазона
- * source: https://learn.javascript.ru/task/random-int-min-max
+ * {@link https://learn.javascript.ru/task/random-int-min-max}
  * @param {number} from
  * @param {number} to
  * @returns {number}
@@ -44,8 +44,7 @@ const createArrayOfNumbers = (length = 25) => {
 
 
 /**
- * Тасование Фишера—Йетса: https://learn.javascript.ru/task/shuffle
- * Тасует исходный массив
+ * {@link https://learn.javascript.ru/task/shuffle | Тасование Фишера—Йетса. Тасует исходный массив}
  * @param {array} array
  * @returns возвращает перемешанный массив
  */
