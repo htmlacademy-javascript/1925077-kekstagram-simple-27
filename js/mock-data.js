@@ -27,7 +27,7 @@ const MAX_COMMENTS = 200;
  * @param {array} descriptions
  * @returns Возвращает массив объектов с данными к фото
  */
-const createArrayDataOfPhotos = (amount) => {
+const createArrayDataOfPhotos = (amount = AMOUNT_OF_OBJECTS) => {
   const urls = shuffle(createArrayOfNumbers(amount));
   const data = [];
   for (let i = 0; i < amount; i++) {
