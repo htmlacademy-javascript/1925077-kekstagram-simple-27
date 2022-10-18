@@ -27,14 +27,14 @@ const MAX_COMMENTS = 200;
  * @param {array} descriptions
  * @returns Возвращает массив объектов с данными к фото
  */
-const createArrayDataOfPhotos = (amount, descriptions) => {
+const createArrayDataOfPhotos = (amount = AMOUNT_OF_OBJECTS) => {
   const urls = shuffle(createArrayOfNumbers(amount));
   const data = [];
   for (let i = 0; i < amount; i++) {
     const dataOfaPhoto = {
       id: i + 1,
       url: `photos/${urls[i]}.jpg`,
-      description: descriptions[getRandomOnlyPositiveInt(0, descriptions.length - 1)],
+      description: DESCRIPTIONS[getRandomOnlyPositiveInt(0, DESCRIPTIONS.length - 1)],
       likes: getRandomOnlyPositiveInt(MIN_LIKES, MAX_LIKES),
       comments:getRandomOnlyPositiveInt(MIN_COMMENTS, MAX_COMMENTS),
     };
