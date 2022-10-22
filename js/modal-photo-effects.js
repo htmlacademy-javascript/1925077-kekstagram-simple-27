@@ -2,11 +2,13 @@ const modalElement = document.querySelector('.img-upload__overlay');
 const bodyElement = document.querySelector('body');
 const buttonCloseElement = document.querySelector('.img-upload__cancel');
 const uploadFileButtonElement = document.querySelector('#upload-file');
+// const imgPreviewElement = document.querySelector('.img-upload__preview').querySelector('img');
 
 
 const closeModal = () => {
   modalElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
+  // uploadFileButtonElement.value = '';
 };
 
 
@@ -27,9 +29,7 @@ const openModal = () => {
 };
 
 
-window.addEventListener('load', () => openModal());
-
-uploadFileButtonElement.addEventListener('click', (evt) => {
-  evt.preventDefault();
+uploadFileButtonElement.addEventListener('click', () => {
+  // evt.preventDefault();
   openModal();
 });
