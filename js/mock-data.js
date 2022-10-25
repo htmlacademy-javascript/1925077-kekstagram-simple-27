@@ -24,7 +24,6 @@ const MAX_COMMENTS = 200;
 /**
  * Каждый объект массива — описание фотографии, опубликованной пользователем
  * @param {number} amount
- * @param {array} descriptions
  * @returns Возвращает массив объектов с данными к фото
  */
 const createArrayDataOfPhotos = (amount = AMOUNT_OF_OBJECTS) => {
