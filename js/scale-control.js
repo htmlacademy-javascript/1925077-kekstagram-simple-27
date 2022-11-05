@@ -20,7 +20,7 @@ const scale = (value) => {
 };
 
 
-const zoonIn = () => {
+const zoomIn = () => {
   if (valueInControlValue >= MAX_SIZE - STEP) {
     valueInControlValue = MAX_SIZE;
   } else {
@@ -31,7 +31,7 @@ const zoonIn = () => {
 };
 
 
-const zoonOut = () => {
+const zoomOut = () => {
   if (valueInControlValue <= MIN_SIZE) {
     valueInControlValue = MIN_SIZE;
   } else {
@@ -42,5 +42,5 @@ const zoonOut = () => {
 };
 
 
-controlBiggerElement.addEventListener('click', zoonIn);
-controlSmallerElement.addEventListener('click', zoonOut);
+controlBiggerElement.addEventListener('click', zoomIn);
+controlSmallerElement.addEventListener('click', zoomOut);
