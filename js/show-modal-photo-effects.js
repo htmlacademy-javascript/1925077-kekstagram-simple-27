@@ -35,3 +35,6 @@ uploadFileButtonElement.addEventListener('change', () => {
 formElement.addEventListener('reset', () => {
   closeModal();
 });
+
+
+openModal();
