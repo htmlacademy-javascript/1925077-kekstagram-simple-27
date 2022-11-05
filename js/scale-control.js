@@ -12,10 +12,12 @@ let valueInControlValue = MAX_SIZE;//Дефолтное значение при 
 
 controlValueElement.value = `${valueInControlValue}%`;//Дефолтное значение при загрузке в самом элементе
 
-
+/**
+ * Принимет измененное значение масштаба картинки и задает его элементам в разметке
+ * @param {number} value
+ */
 const scale = (value) => {
   imgElementElement.style.transform = `scale(${value / 100})`;
-  valueInControlValue = value;
   controlValueElement.value = `${valueInControlValue}%`;
 };
 
