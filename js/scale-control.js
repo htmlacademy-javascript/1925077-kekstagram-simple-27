@@ -1,14 +1,16 @@
 const controlSmallerElement = document.querySelector('.scale__control--smaller');
 const controlBiggerElement = document.querySelector('.scale__control--bigger');
 const controlValueElement = document.querySelector('.scale__control--value');
-const imgElementElement = document.querySelector('.img-upload__preview').querySelector('img');
+const imgElementElement = document.querySelector('.img-upload__preview img');
+const formElement = document.querySelector('.img-upload__form');
 
 const MIN_SIZE = 25;
 const MAX_SIZE = 100;
 const STEP = 25;
 
 
-let valueInControlValue = MAX_SIZE;//Дефолтное значение при загрузке
+const defaultValue = () => MAX_SIZE;
+let valueInControlValue = defaultValue();//Дефолтное значение при загрузке
 
 controlValueElement.value = `${valueInControlValue}%`;//Дефолтное значение при загрузке в самом элементе
 
@@ -46,3 +48,9 @@ const zoomOut = () => {
 
 controlBiggerElement.addEventListener('click', zoomIn);
 controlSmallerElement.addEventListener('click', zoomOut);
+
+
+formElement.addEventListener('reset', () => {
+  valueInControlValue = defaultValue();
+  imgElementElement.style.transform = `scale(${valueInControlValue / 100})`;
+});
