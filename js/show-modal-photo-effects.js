@@ -1,3 +1,5 @@
+import { scale, resetScale } from './scale-control.js';
+
 const bodyElement = document.querySelector('body');
 const formElement = bodyElement.querySelector('.img-upload__form');
 const modalElement = formElement.querySelector('.img-upload__overlay');
@@ -29,11 +31,13 @@ const openModal = () => {
 
 uploadFileButtonElement.addEventListener('change', () => {
   openModal();
+  scale();
 });
 
 
 formElement.addEventListener('reset', () => {
   closeModal();
+  resetScale();
 });
 
 
