@@ -1,4 +1,4 @@
-import { scale, resetScale } from './scale-control.js';
+import { scale as defaultScale, resetScale } from './scale-control.js';
 
 const bodyElement = document.querySelector('body');
 const formElement = bodyElement.querySelector('.img-upload__form');
@@ -31,7 +31,7 @@ const openModal = () => {
 
 uploadFileButtonElement.addEventListener('change', () => {
   openModal();
-  scale();
+  defaultScale();
 });
 
 
