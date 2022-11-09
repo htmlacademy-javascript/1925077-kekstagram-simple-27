@@ -13,10 +13,9 @@ const closeModal = () => {
 };
 
 
-const closeModalonEscape = (evt) => {
+const closeModalOnEscape = (evt) => {
   if (evt.key === 'Escape') {
     evt.preventDefault();
-    document.removeEventListener('keydown', closeModalonEscape);
     formElement.reset();
   }
 };
@@ -25,7 +24,7 @@ const closeModalonEscape = (evt) => {
 const openModal = () => {
   modalElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
-  document.addEventListener('keydown', closeModalonEscape);
+  document.addEventListener('keydown', closeModalOnEscape);
 };
 
 
@@ -38,6 +37,7 @@ uploadFileButtonElement.addEventListener('change', () => {
 formElement.addEventListener('reset', () => {
   closeModal();
   resetScale();
+  document.removeEventListener('keydown', closeModalOnEscape);
 });
 
 

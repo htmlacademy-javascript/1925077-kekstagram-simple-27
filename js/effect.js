@@ -56,7 +56,7 @@ noUiSlider.create(sliderElement, {
 
 fieldsetInputElement.style.display = 'none';
 
-const setFilter = (preset, filter, start, mean = '') => {
+const setFilter = (filter, start, mean = '') => {
   sliderElement.noUiSlider.set(start);
   sliderElement.noUiSlider.on('update', () => {
     effectValueInput.value = sliderElement.noUiSlider.get();
@@ -66,7 +66,7 @@ const setFilter = (preset, filter, start, mean = '') => {
 };
 
 const onListClick = (evt) => {
-  imageElement.removeAttribute('class');// Лучше бы конечно удалять классы по маске, то есть по содержанию 'effects__preview--'
+  imageElement.removeAttribute('class');
   imageElement.style.filter = '';
   if (evt.target.classList.contains('effects__radio')) {
     const effect = evt.target.value;
@@ -86,23 +86,23 @@ const onListClick = (evt) => {
       switch (effect) {
         case 'chrome':
           updateSlider(ZERO_TO_1);
-          setFilter(ZERO_TO_1, 'grayscale', ZERO_TO_1.start);
+          setFilter('grayscale', ZERO_TO_1.start);
           break;
         case 'sepia':
           updateSlider(ZERO_TO_1);
-          setFilter(ZERO_TO_1, 'sepia', ZERO_TO_1.start);
+          setFilter('sepia', ZERO_TO_1.start);
           break;
         case 'marvin':
           updateSlider(ZERO_TO_100_PERCENT);
-          setFilter(ZERO_TO_100_PERCENT, 'invert', ZERO_TO_100_PERCENT.start, ZERO_TO_100_PERCENT.mean);
+          setFilter('invert', ZERO_TO_100_PERCENT.start, ZERO_TO_100_PERCENT.mean);
           break;
         case 'phobos':
           updateSlider(FOBOS);
-          setFilter(FOBOS, 'blur', FOBOS.start, FOBOS.mean);
+          setFilter('blur', FOBOS.start, FOBOS.mean);
           break;
         case 'heat':
           updateSlider(HEAT);
-          setFilter(HEAT, 'brightness', HEAT.start);
+          setFilter('brightness', HEAT.start);
           break;
       }
     }
