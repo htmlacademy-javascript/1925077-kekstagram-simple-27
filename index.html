@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="vendor\nouislider\nouislider.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
 </head>
@@ -113,9 +114,14 @@
                 </fieldset>
 
                 <!-- Добавление комментария к изображению -->
+                <!--
+                data-pristine-required-message="Обязательное поле"
+                data-pristine-minlength-message="Минимальная длина 20 символов"
+                data-pristine-maxlength-message="Максимальная длина 140 символов" -->
                 <fieldset class="img-upload__text text">
                   <textarea class="text__description" name="description" placeholder="Ваш комментарий..." required
-                    minlength="20" maxlength="140"></textarea>
+                    minlength="20" maxlength="140" data-pristine-minlength-message="Минимальная длина 20 символов"
+                    data-pristine-required-message="Обязательное поле"></textarea>
                 </fieldset>
 
                 <!-- Кнопка для отправки данных на сервер -->
@@ -178,6 +184,8 @@
     </section>
   </template>
 
+  <script src="vendor/pristine/pristine.min.js"></script>
+  <script src="vendor/nouislider/nouislider.js"></script>
   <script src="js/main.js" type="module"></script>
 
 </body>

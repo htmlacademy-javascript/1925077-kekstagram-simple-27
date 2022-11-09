@@ -21,15 +21,6 @@ const getRandomOnlyPositiveInt = (from = 0, to = 8) => {
 
 
 /**
- * Проверяет, не превышает ли строка максимум.
- * @param {string} text
- * @param {number} maxLength
- * @returns {boolean} True, если не превышает.
- */
-const checkLengthOfComment = (text, maxLength = 140) => text.length <= maxLength;
-
-
-/**
  * Функция создания массива [1, 2, 3 ... любой длины]
  * @param {number} length
  * @returns возвращает массив чисел от 1 до выбранного с шагом 1
@@ -56,4 +47,4 @@ const shuffle = (array) => {
   return array;
 };
 
-export {getRandomOnlyPositiveInt, checkLengthOfComment, createArrayOfNumbers, shuffle};
+export {getRandomOnlyPositiveInt, createArrayOfNumbers, shuffle};
