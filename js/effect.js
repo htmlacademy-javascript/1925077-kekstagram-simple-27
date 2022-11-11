@@ -65,6 +65,12 @@ const setFilter = (filter, start, mean = '') => {
   });
 };
 
+const updateSlider = (preset) => {
+  sliderElement.noUiSlider.updateOptions({
+    ...preset
+  });
+};
+
 const onListClick = (evt) => {
   imageElement.removeAttribute('class');
   imageElement.style.filter = '';
@@ -76,12 +82,6 @@ const onListClick = (evt) => {
       fieldsetInputElement.style.display = 'none';
     } else {
       fieldsetInputElement.style.display = 'block';
-
-      const updateSlider = (preset) => {
-        sliderElement.noUiSlider.updateOptions({
-          ...preset
-        });
-      };
 
       switch (effect) {
         case 'chrome':

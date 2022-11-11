@@ -39,6 +39,3 @@ formElement.addEventListener('reset', () => {
   resetScale();
   document.removeEventListener('keydown', closeModalOnEscape);
 });
-
-
-openModal();
