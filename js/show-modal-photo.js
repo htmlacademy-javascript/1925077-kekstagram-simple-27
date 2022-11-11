@@ -1,4 +1,5 @@
 import { scale as defaultScale, resetScale } from './scale-control.js';
+import { setUserFormSubmit } from './form-validate.js';
 
 const bodyElement = document.querySelector('body');
 const formElement = bodyElement.querySelector('.img-upload__form');
@@ -39,3 +40,7 @@ formElement.addEventListener('reset', () => {
   resetScale();
   document.removeEventListener('keydown', closeModalOnEscape);
 });
+
+setUserFormSubmit(closeModal);
+
+// export {closeModal, openModal};
