@@ -5,7 +5,6 @@ const MAX_LENGTH_OF_COMMENT = 140;
 const checkLongOfComment = (value) => value.length < MAX_LENGTH_OF_COMMENT;
 
 
-// const pristine = new Pristine(formElement);
 const pristine = new Pristine(formElement, {
   classTo: 'img-upload__text',
   errorTextParent: 'img-upload__text',
@@ -13,25 +12,9 @@ const pristine = new Pristine(formElement, {
 
 pristine.addValidator(textInputElement, checkLongOfComment, 'Максимальная длина 140 символов');
 
-const setUserFormSubmit = (onSuccess) => {
-  formElement.addEventListener('submit', (evt) => {
+formElement.addEventListener('submit', (evt) => {
+  const isValid = pristine.validate();
+  if (!isValid) {
     evt.preventDefault();
-    const isValide = pristine.validate();
-
-    if (isValide) {
-      const formData = new FormData(evt.target);
-
-      fetch(
-        'https://27.javascript.pages.academy/kekstagram-simple',
-        {
-          method: 'POST',
-          body: formData,
-        },
-      );
-    } else {
-      console.log('asdf');
-    }
-  });
-};
-
-export {setUserFormSubmit};
+  }
+});

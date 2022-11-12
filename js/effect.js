@@ -83,6 +83,7 @@ const onListClick = (evt) => {
     } else {
       fieldsetInputElement.style.display = 'block';
 
+
       switch (effect) {
         case 'chrome':
           updateSlider(ZERO_TO_1);
