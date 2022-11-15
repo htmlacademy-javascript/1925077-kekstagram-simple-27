@@ -41,4 +41,4 @@ formElement.addEventListener('reset', () => {
 });
 
 
-// openModal();
+export {closeModal, openModal};

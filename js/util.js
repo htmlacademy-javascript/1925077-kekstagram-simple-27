@@ -47,4 +47,5 @@ const shuffle = (array) => {
   return array;
 };
 
-export {getRandomOnlyPositiveInt, createArrayOfNumbers, shuffle};
+
+export { getRandomOnlyPositiveInt, createArrayOfNumbers, shuffle };

@@ -1,9 +1,6 @@
-// import {createArrayDataOfPhotos} from './mock-data.js';
-
 const photosContainerElement = document.querySelector('.pictures');
 const miniPhotoTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const photosListFragment = document.createDocumentFragment();
-// const dataOfPhotos = createArrayDataOfPhotos();
 
 
 const loadPhotos = (photos) => {

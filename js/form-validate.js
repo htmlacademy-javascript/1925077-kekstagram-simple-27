@@ -12,9 +12,34 @@ const pristine = new Pristine(formElement, {
 
 pristine.addValidator(textInputElement, checkLongOfComment, 'Максимальная длина 140 символов');
 
-formElement.addEventListener('submit', (evt) => {
-  const isValid = pristine.validate();
-  if (!isValid) {
+
+const setUserFormSubmit = (onSuccess) => {
+  formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
-  }
-});
+    const isValid = pristine.validate();
+    if (isValid) {
+      const formData = new FormData(evt.target);
+
+      fetch(
+        'https://27.javascript.pages.academy/kekstagram-simple',
+        {
+          method: 'POST',
+          body: formData,
+        },
+      )
+        .then((response) => {
+          if (response.ok) {
+            onSuccess();
+          } else {
+            console.log('данные не отправились');
+          }
+        })
+        .catch(() => {
+          console.log('хз когда должно сработать');
+        });
+    }
+  });
+};
+
+
+export {setUserFormSubmit};
