@@ -56,6 +56,7 @@ noUiSlider.create(sliderElement, {
 
 fieldsetInputElement.style.display = 'none';
 
+
 const setFilter = (filter, start, mean = '') => {
   sliderElement.noUiSlider.set(start);
   sliderElement.noUiSlider.on('update', () => {
@@ -83,7 +84,6 @@ const onListClick = (evt) => {
     } else {
       fieldsetInputElement.style.display = 'block';
 
-
       switch (effect) {
         case 'chrome':
           updateSlider(ZERO_TO_1);
@@ -110,9 +110,10 @@ const onListClick = (evt) => {
   }
 };
 
+
 sliderElement.noUiSlider.on('update', () => {
   effectValueInput.value = sliderElement.noUiSlider.get();
 });
 
 
-effectListElements.addEventListener('click', onListClick);
+effectListElements.addEventListener('change', onListClick);
