@@ -10,6 +10,7 @@ const uploadFileButtonElement = formElement.querySelector('#upload-file');
 const closeModal = () => {
   modalElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
+  formElement.reset();
 };
 
 
@@ -41,4 +42,4 @@ formElement.addEventListener('reset', () => {
 });
 
 
-export {closeModal, openModal};
+export { closeModal, openModal };
