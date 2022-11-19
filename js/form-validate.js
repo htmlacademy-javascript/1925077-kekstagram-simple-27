@@ -1,6 +1,8 @@
+import { uploadPhoto } from './upload.js';
+
 const formElement = document.querySelector('.img-upload__form');
 const textInputElement = formElement.querySelector('.text__description');
-// const errorTemplateElement = document.querySelector('.error');
+const dataButtonElement = document.querySelector('#upload-submit');
 
 const MAX_LENGTH_OF_COMMENT = 140;
 const checkLongOfComment = (value) => value.length < MAX_LENGTH_OF_COMMENT;
@@ -13,34 +15,27 @@ const pristine = new Pristine(formElement, {
 
 pristine.addValidator(textInputElement, checkLongOfComment, 'Максимальная длина 140 символов');
 
+const disableButton = () => {
+  dataButtonElement.disabled = true;
+  dataButtonElement.textContent = 'Данные отправляются';
+};
 
-const setUserFormSubmit = (onSuccess) => {
+const enableDataButton = () => {
+  dataButtonElement.disabled = false;
+  dataButtonElement.textContent = 'Опубликовать';
+};
+
+const setUserFormSubmit = (onSuccess, onError) => {
   formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const isValid = pristine.validate();
     if (isValid) {
+      disableButton();
       const formData = new FormData(evt.target);
-
-      fetch(
-        'https://27.javascript.pages.academy/kekstagram-simple',
-        {
-          method: 'POST',
-          body: formData,
-        },
-      )
-        .then((response) => {
-          if (response.ok) {
-            onSuccess();
-          } else {
-            console.log('данные не отправились');
-          }
-        })
-        .catch(() => {
-          console.log('хз когда должно сработать');
-        });
+      uploadPhoto(onSuccess, onError, formData);
     }
   });
 };
 
 
-export {setUserFormSubmit};
+export { setUserFormSubmit, enableDataButton };
