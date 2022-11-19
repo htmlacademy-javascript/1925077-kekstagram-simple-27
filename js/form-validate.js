@@ -4,7 +4,7 @@ import { uploadPhoto } from './upload.js';
 const bodyElement = document.querySelector('body');
 const formElement = bodyElement.querySelector('.img-upload__form');
 const textInputElement = formElement.querySelector('.text__description');
-const dataButtonElement = bodyElement.querySelector('#upload-submit');
+const inputFileSubmitElement = bodyElement.querySelector('#upload-submit');
 const uploadingSuccessTemplate = bodyElement.querySelector('#success').content;
 const uploadErrorTemplate = bodyElement.querySelector('#error').content;
 
@@ -63,13 +63,13 @@ const pristine = new Pristine(formElement, {
 pristine.addValidator(textInputElement, checkLongOfComment, 'Максимальная длина 140 символов');
 
 const setDisableSubmitButton = () => {
-  dataButtonElement.disabled = true;
-  dataButtonElement.textContent = 'Данные отправляются';
+  inputFileSubmitElement.disabled = true;
+  inputFileSubmitElement.textContent = 'Данные отправляются';
 };
 
 const setEnableSubmitButton = () => {
-  dataButtonElement.disabled = false;
-  dataButtonElement.textContent = 'Опубликовать';
+  inputFileSubmitElement.disabled = false;
+  inputFileSubmitElement.textContent = 'Опубликовать';
 };
 
 
