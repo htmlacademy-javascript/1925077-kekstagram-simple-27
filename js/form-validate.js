@@ -1,4 +1,5 @@
 import { uploadPhoto } from './upload.js';
+import { closeModal } from './show-modal-photo.js';
 
 
 const bodyElement = document.querySelector('body');
@@ -127,4 +128,7 @@ const setUserFormSubmit = (onSuccess, onError = showUploadError) => {
 };
 
 
-export { setUserFormSubmit, setEnableSubmitButton, showSuccessPopup };
+setUserFormSubmit(closeModal);
+
+
+export { setEnableSubmitButton, showSuccessPopup };
