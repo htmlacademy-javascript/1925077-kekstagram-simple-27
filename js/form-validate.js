@@ -1,5 +1,6 @@
 const formElement = document.querySelector('.img-upload__form');
 const textInputElement = formElement.querySelector('.text__description');
+// const errorTemplateElement = document.querySelector('.error');
 
 const MAX_LENGTH_OF_COMMENT = 140;
 const checkLongOfComment = (value) => value.length < MAX_LENGTH_OF_COMMENT;
