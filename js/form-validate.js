@@ -131,4 +131,4 @@ const setUserFormSubmit = (onSuccess, onError = showUploadError) => {
 setUserFormSubmit(closeModal);
 
 
-export { setEnableSubmitButton, showSuccessPopup };
+export { setEnableSubmitButton, showSuccessPopup, setUserFormSubmit };

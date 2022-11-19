@@ -34,12 +34,6 @@ const openModal = () => {
 };
 
 
-uploadFileButtonElement.addEventListener('change', () => {
-  openModal();
-  defaultScale();
-});
-
-
 formElement.addEventListener('reset', () => {
   closeModal();
   resetScale();
@@ -48,6 +42,8 @@ formElement.addEventListener('reset', () => {
 
 
 uploadFileButtonElement.addEventListener('change', () => {
+  openModal();
+  defaultScale();
   const file = uploadFileButtonElement.files[0];
   const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
