@@ -72,9 +72,13 @@ const updateSlider = (preset) => {
   });
 };
 
-const onListClick = (evt) => {
+const resetEffectOnImg = () => {
   imageElement.removeAttribute('class');
   imageElement.style.filter = '';
+};
+
+const onListClick = (evt) => {
+  resetEffectOnImg();
   if (evt.target.classList.contains('effects__radio')) {
     const effect = evt.target.value;
     imageElement.classList.add(`effects__preview--${effect}`);
@@ -119,4 +123,4 @@ sliderElement.noUiSlider.on('update', () => {
 effectListElements.addEventListener('change', onListClick);
 
 
-export { onListClick };
+export { resetEffectOnImg };
