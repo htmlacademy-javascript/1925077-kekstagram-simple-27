@@ -36,7 +36,7 @@ const showSuccessPopup = () => {
       successModalElement.remove();
     };
 
-    const testFunction = (element) => {
+    const onDocumentClick = (element) => {
       const target = element.target;
       const hasMessage = target === node || node.contains(target);
 
@@ -46,7 +46,7 @@ const showSuccessPopup = () => {
       }
     };
 
-    document.addEventListener('click', testFunction);
+    document.addEventListener('click', onDocumentClick);
   };
 
   onMissClickClose(successInnerElement);
@@ -97,16 +97,16 @@ const showUploadError = () => {
       errorModalElement.remove();
     };
 
-    const checkError = (element) => {
+    const onDocumentClick = (element) => {
       const target = element.target;
-      const itsMessage = target === node || node.contains(target);
+      const hasMessage = target === node || node.contains(target);
 
-      if (!itsMessage) {
+      if (!hasMessage) {
         closeMessage();
       }
     };
 
-    document.addEventListener('click', checkError);
+    document.addEventListener('click', onDocumentClick);
   };
 
   missClickErrorClose(errorInnerElement);
