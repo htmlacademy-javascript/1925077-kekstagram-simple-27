@@ -5,18 +5,20 @@ const formElement = bodyElement.querySelector('.img-upload__form');
 const modalElement = formElement.querySelector('.img-upload__overlay');
 /** @type {HTMLInputElement} */
 const uploadFileButtonElement = formElement.querySelector('#upload-file');
+const imageElement = formElement.querySelector('.img-upload__preview img');
+const imagePreviewElements = formElement.querySelectorAll('.effects__preview');
 
 
-const closeModal = () => {
-  modalElement.classList.add('hidden');
-  bodyElement.classList.remove('modal-open');
-};
+const FILE_TYPES = ['jpg', 'jpeg', 'png'];
+
+
+const closeModal = () => formElement.reset();
 
 
 const closeModalOnEscape = (evt) => {
   if (evt.key === 'Escape') {
     evt.preventDefault();
-    formElement.reset();
+    closeModal();
   }
 };
 
@@ -28,17 +30,26 @@ const openModal = () => {
 };
 
 
-uploadFileButtonElement.addEventListener('change', () => {
-  openModal();
-  defaultScale();
-});
-
-
 formElement.addEventListener('reset', () => {
-  closeModal();
+  modalElement.classList.add('hidden');
+  bodyElement.classList.remove('modal-open');
   resetScale();
   document.removeEventListener('keydown', closeModalOnEscape);
 });
 
 
-openModal();
+uploadFileButtonElement.addEventListener('change', () => {
+  openModal();
+  defaultScale();
+  const file = uploadFileButtonElement.files[0];
+  const fileName = file.name.toLowerCase();
+  const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
+
+  if (matches) {
+    imageElement.src = URL.createObjectURL(file);
+    imagePreviewElements.forEach((elem) => (elem.style = `background-image: url(${URL.createObjectURL(file)});`));
+  }
+});
+
+
+export { closeModal, openModal };

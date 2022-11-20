@@ -56,12 +56,19 @@ noUiSlider.create(sliderElement, {
 
 fieldsetInputElement.style.display = 'none';
 
+
 const setFilter = (filter, start, mean = '') => {
   sliderElement.noUiSlider.set(start);
   sliderElement.noUiSlider.on('update', () => {
     effectValueInput.value = sliderElement.noUiSlider.get();
     const value = sliderElement.noUiSlider.get();
     imageElement.style.filter = `${filter}(${value}${mean})`;
+  });
+};
+
+const updateSlider = (preset) => {
+  sliderElement.noUiSlider.updateOptions({
+    ...preset
   });
 };
 
@@ -76,12 +83,6 @@ const onListClick = (evt) => {
       fieldsetInputElement.style.display = 'none';
     } else {
       fieldsetInputElement.style.display = 'block';
-
-      const updateSlider = (preset) => {
-        sliderElement.noUiSlider.updateOptions({
-          ...preset
-        });
-      };
 
       switch (effect) {
         case 'chrome':
@@ -109,9 +110,10 @@ const onListClick = (evt) => {
   }
 };
 
+
 sliderElement.noUiSlider.on('update', () => {
   effectValueInput.value = sliderElement.noUiSlider.get();
 });
 
 
-effectListElements.addEventListener('click', onListClick);
+effectListElements.addEventListener('change', onListClick);

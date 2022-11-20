@@ -27,7 +27,9 @@
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
-              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required>
+              <!-- accept="image/png, image/jpeg, image/jpg" -->
+              <input type="file" id="upload-file" class="img-upload__input  visually-hidden" name="filename" required
+                accept="image/png, image/jpeg, image/jpg">
               <label for="upload-file" class="img-upload__label  img-upload__control">Загрузить</label>
             </fieldset>
 
@@ -114,10 +116,6 @@
                 </fieldset>
 
                 <!-- Добавление комментария к изображению -->
-                <!--
-                data-pristine-required-message="Обязательное поле"
-                data-pristine-minlength-message="Минимальная длина 20 символов"
-                data-pristine-maxlength-message="Максимальная длина 140 символов" -->
                 <fieldset class="img-upload__text text">
                   <textarea class="text__description" name="description" placeholder="Ваш комментарий..." required
                     minlength="20" maxlength="140" data-pristine-minlength-message="Минимальная длина 20 символов"
