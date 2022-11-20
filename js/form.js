@@ -1,5 +1,5 @@
 import { uploadPhoto } from './upload.js';
-import { closeModal, closeModalOnEscape } from './show-modal-photo.js';
+import { closeModal, onDocumentKeydown } from './show-modal-photo.js';
 
 
 const bodyElement = document.querySelector('body');
@@ -88,7 +88,7 @@ const showUploadError = () => {
       evt.preventDefault();
       errorModalElement.remove();
       document.removeEventListener('keydown', onErrorModalEscKeydown);
-      document.addEventListener('keydown', closeModalOnEscape);
+      document.addEventListener('keydown', onDocumentKeydown);
     }
   };
 
@@ -113,10 +113,10 @@ const showUploadError = () => {
   closeErrorButtonElement.addEventListener('click', () => {
     errorModalElement.remove();
     document.removeEventListener('keydown', onErrorModalEscKeydown);
-    document.addEventListener('keydown', closeModalOnEscape);
+    document.addEventListener('keydown', onDocumentKeydown);
   });
 
-  document.removeEventListener('keydown', closeModalOnEscape);
+  document.removeEventListener('keydown', onDocumentKeydown);
   document.addEventListener('keydown', onErrorModalEscKeydown);
 };
 

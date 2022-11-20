@@ -18,7 +18,7 @@ const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 const closeModal = () => formElement.reset();
 
 
-const closeModalOnEscape = (evt) => {
+const onDocumentKeydown = (evt) => {
   if (evt.key === 'Escape') {
     evt.preventDefault();
     closeModal();
@@ -29,7 +29,7 @@ const closeModalOnEscape = (evt) => {
 const openModal = () => {
   modalElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
-  document.addEventListener('keydown', closeModalOnEscape);
+  document.addEventListener('keydown', onDocumentKeydown);
   fieldsetInputElement.style.display = 'none';
 };
 
@@ -39,7 +39,7 @@ formElement.addEventListener('reset', () => {
   modalElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
   resetScale();
-  document.removeEventListener('keydown', closeModalOnEscape);
+  document.removeEventListener('keydown', onDocumentKeydown);
   onListClick();
 });
 
@@ -58,4 +58,4 @@ uploadFileButtonElement.addEventListener('change', () => {
 });
 
 
-export { closeModal, openModal, closeModalOnEscape };
+export { closeModal, openModal, onDocumentKeydown };
