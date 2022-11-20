@@ -36,9 +36,9 @@ const showSuccessPopup = () => {
 
     const testFunction = (element) => {
       const target = element.target;
-      const itsMessage = target === node || node.contains(target);
+      const hasMessage = target === node || node.contains(target);
 
-      if (!itsMessage) {
+      if (!hasMessage) {
         closeMessage();
         document.removeEventListener('keydown', onSuccessPopup);
       }
