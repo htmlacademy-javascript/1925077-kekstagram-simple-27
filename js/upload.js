@@ -1,6 +1,6 @@
 import { setEnableSubmitButton, showSuccessPopup } from './form.js';
 
-const SERVER_FOR_UPLOAD = 'https://27.javascript.pages.academy/kekstagram-simple';
+const SERVER_FOR_UPLOAD = 'https://27.javascript.pages.academy/kekstagram-simpl';
 
 const uploadPhoto = (onSuccess, onError, photoWithOtherData) => {
   fetch(

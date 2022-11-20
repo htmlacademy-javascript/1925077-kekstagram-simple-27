@@ -45,7 +45,6 @@ const showSuccessPopup = () => {
         document.removeEventListener('keydown', onSuccessPopup);
       }
     };
-
     document.addEventListener('click', onDocumentClick);
   };
 
@@ -103,6 +102,8 @@ const showUploadError = () => {
 
       if (!hasMessage) {
         closeMessage();
+        document.removeEventListener('keydown', onErrorModalEscKeydown);
+        document.addEventListener('keydown', onDocumentKeydown);
       }
     };
 
