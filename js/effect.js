@@ -117,3 +117,6 @@ sliderElement.noUiSlider.on('update', () => {
 
 
 effectListElements.addEventListener('change', onListClick);
+
+
+export { onListClick };

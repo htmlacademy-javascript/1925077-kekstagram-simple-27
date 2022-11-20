@@ -1,4 +1,6 @@
 import { scale as defaultScale, resetScale } from './scale-control.js';
+import { onListClick } from './effect.js';
+import { pristine } from './form.js';
 
 const bodyElement = document.querySelector('body');
 const formElement = bodyElement.querySelector('.img-upload__form');
@@ -7,6 +9,7 @@ const modalElement = formElement.querySelector('.img-upload__overlay');
 const uploadFileButtonElement = formElement.querySelector('#upload-file');
 const imageElement = formElement.querySelector('.img-upload__preview img');
 const imagePreviewElements = formElement.querySelectorAll('.effects__preview');
+const fieldsetInputElement = formElement.querySelector('.img-upload__effect-level');
 
 
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
@@ -27,14 +30,17 @@ const openModal = () => {
   modalElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
   document.addEventListener('keydown', closeModalOnEscape);
+  fieldsetInputElement.style.display = 'none';
 };
 
 
 formElement.addEventListener('reset', () => {
+  pristine.reset();
   modalElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
   resetScale();
   document.removeEventListener('keydown', closeModalOnEscape);
+  onListClick();
 });
 
 
@@ -52,4 +58,4 @@ uploadFileButtonElement.addEventListener('change', () => {
 });
 
 
-export { closeModal, openModal };
+export { closeModal, openModal, closeModalOnEscape };

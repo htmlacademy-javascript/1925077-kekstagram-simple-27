@@ -1,5 +1,5 @@
 import { uploadPhoto } from './upload.js';
-import { closeModal } from './show-modal-photo.js';
+import { closeModal, closeModalOnEscape } from './show-modal-photo.js';
 
 
 const bodyElement = document.querySelector('body');
@@ -61,7 +61,7 @@ const pristine = new Pristine(formElement, {
   errorTextParent: 'img-upload__text',
 });
 
-pristine.addValidator(textInputElement, checkLongOfComment, 'Максимальная длина 140 символов');
+pristine.addValidator(textInputElement, checkLongOfComment, `Максимальная длина ${MAX_LENGTH_OF_COMMENT} символов`);
 
 const setDisableSubmitButton = () => {
   inputFileSubmitElement.disabled = true;
@@ -86,6 +86,7 @@ const showUploadError = () => {
       evt.preventDefault();
       errorModalElement.remove();
       document.removeEventListener('keydown', onErrorModalEscKeydown);
+      document.addEventListener('keydown', closeModalOnEscape);
     }
   };
 
@@ -110,8 +111,10 @@ const showUploadError = () => {
   closeErrorButtonElement.addEventListener('click', () => {
     errorModalElement.remove();
     document.removeEventListener('keydown', onErrorModalEscKeydown);
+    document.addEventListener('keydown', closeModalOnEscape);
   });
 
+  document.removeEventListener('keydown', closeModalOnEscape);
   document.addEventListener('keydown', onErrorModalEscKeydown);
 };
 
@@ -127,4 +130,4 @@ formElement.addEventListener('submit', (evt) => {
 });
 
 
-export { setEnableSubmitButton, showSuccessPopup };
+export { setEnableSubmitButton, showSuccessPopup, pristine };
