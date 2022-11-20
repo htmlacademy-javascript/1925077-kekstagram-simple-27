@@ -1,5 +1,5 @@
 import { uploadPhoto } from './upload.js';
-import { closeModal } from './show-modal-photo.js';
+import { closeModal, onDocumentKeydown } from './show-modal-photo.js';
 
 
 const bodyElement = document.querySelector('body');
@@ -12,6 +12,8 @@ const uploadErrorTemplate = bodyElement.querySelector('#error').content;
 
 const MAX_LENGTH_OF_COMMENT = 140;
 const checkLongOfComment = (value) => value.length < MAX_LENGTH_OF_COMMENT;
+
+textInputElement.setAttribute('maxlength', MAX_LENGTH_OF_COMMENT);
 
 
 const showSuccessPopup = () => {
@@ -34,17 +36,17 @@ const showSuccessPopup = () => {
       successModalElement.remove();
     };
 
-    const testFunction = (element) => {
+    const onDocumentClick = (element) => {
       const target = element.target;
-      const itsMessage = target === node || node.contains(target);
+      const hasMessage = target === node || node.contains(target);
 
-      if (!itsMessage) {
+      if (!hasMessage) {
         closeMessage();
         document.removeEventListener('keydown', onSuccessPopup);
       }
     };
 
-    document.addEventListener('click', testFunction);
+    document.addEventListener('click', onDocumentClick);
   };
 
   onMissClickClose(successInnerElement);
@@ -61,7 +63,7 @@ const pristine = new Pristine(formElement, {
   errorTextParent: 'img-upload__text',
 });
 
-pristine.addValidator(textInputElement, checkLongOfComment, 'Максимальная длина 140 символов');
+pristine.addValidator(textInputElement, checkLongOfComment, `Максимальная длина ${MAX_LENGTH_OF_COMMENT} символов`);
 
 const setDisableSubmitButton = () => {
   inputFileSubmitElement.disabled = true;
@@ -86,6 +88,7 @@ const showUploadError = () => {
       evt.preventDefault();
       errorModalElement.remove();
       document.removeEventListener('keydown', onErrorModalEscKeydown);
+      document.addEventListener('keydown', onDocumentKeydown);
     }
   };
 
@@ -94,24 +97,26 @@ const showUploadError = () => {
       errorModalElement.remove();
     };
 
-    const checkError = (element) => {
+    const onDocumentClick = (element) => {
       const target = element.target;
-      const itsMessage = target === node || node.contains(target);
+      const hasMessage = target === node || node.contains(target);
 
-      if (!itsMessage) {
+      if (!hasMessage) {
         closeMessage();
       }
     };
 
-    document.addEventListener('click', checkError);
+    document.addEventListener('click', onDocumentClick);
   };
 
   missClickErrorClose(errorInnerElement);
   closeErrorButtonElement.addEventListener('click', () => {
     errorModalElement.remove();
     document.removeEventListener('keydown', onErrorModalEscKeydown);
+    document.addEventListener('keydown', onDocumentKeydown);
   });
 
+  document.removeEventListener('keydown', onDocumentKeydown);
   document.addEventListener('keydown', onErrorModalEscKeydown);
 };
 
@@ -127,4 +132,4 @@ formElement.addEventListener('submit', (evt) => {
 });
 
 
-export { setEnableSubmitButton, showSuccessPopup };
+export { setEnableSubmitButton, showSuccessPopup, pristine };
