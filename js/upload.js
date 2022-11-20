@@ -1,4 +1,4 @@
-import { setEnableSubmitButton, showSuccessPopup } from './form-validate.js';
+import { setEnableSubmitButton, showSuccessPopup } from './form.js';
 
 const SERVER_FOR_UPLOAD = 'https://27.javascript.pages.academy/kekstagram-simple';
 

@@ -115,20 +115,16 @@ const showUploadError = () => {
   document.addEventListener('keydown', onErrorModalEscKeydown);
 };
 
-const setUserFormSubmit = (onSuccess, onError = showUploadError) => {
-  formElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const isValid = pristine.validate();
-    if (isValid) {
-      setDisableSubmitButton();
-      const formData = new FormData(evt.target);
-      uploadPhoto(onSuccess, onError, formData);
-    }
-  });
-};
+
+formElement.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const isValid = pristine.validate();
+  if (isValid) {
+    setDisableSubmitButton();
+    const formData = new FormData(evt.target);
+    uploadPhoto(closeModal, showUploadError, formData);
+  }
+});
 
 
-setUserFormSubmit(closeModal);
-
-
-export { setEnableSubmitButton, showSuccessPopup, setUserFormSubmit };
+export { setEnableSubmitButton, showSuccessPopup };

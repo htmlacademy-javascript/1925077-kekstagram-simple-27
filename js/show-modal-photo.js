@@ -12,17 +12,13 @@ const imagePreviewElements = formElement.querySelectorAll('.effects__preview');
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 
-const closeModal = () => {
-  modalElement.classList.add('hidden');
-  bodyElement.classList.remove('modal-open');
-  formElement.reset();
-};
+const closeModal = () => formElement.reset();
 
 
 const closeModalOnEscape = (evt) => {
   if (evt.key === 'Escape') {
     evt.preventDefault();
-    formElement.reset();
+    closeModal();
   }
 };
 
@@ -35,7 +31,8 @@ const openModal = () => {
 
 
 formElement.addEventListener('reset', () => {
-  closeModal();
+  modalElement.classList.add('hidden');
+  bodyElement.classList.remove('modal-open');
   resetScale();
   document.removeEventListener('keydown', closeModalOnEscape);
 });
