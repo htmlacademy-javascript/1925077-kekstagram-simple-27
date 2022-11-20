@@ -13,6 +13,8 @@ const uploadErrorTemplate = bodyElement.querySelector('#error').content;
 const MAX_LENGTH_OF_COMMENT = 140;
 const checkLongOfComment = (value) => value.length < MAX_LENGTH_OF_COMMENT;
 
+textInputElement.setAttribute('maxlength', MAX_LENGTH_OF_COMMENT);
+
 
 const showSuccessPopup = () => {
   const successElement = uploadingSuccessTemplate.cloneNode(true);
