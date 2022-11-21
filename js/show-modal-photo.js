@@ -1,5 +1,5 @@
 import { scale as defaultScale, resetScale } from './scale-control.js';
-import { resetEffectOnImg } from './effect.js';
+import { resetEffectInImg } from './effect.js';
 import { pristine } from './form.js';
 
 const bodyElement = document.querySelector('body');
@@ -40,7 +40,7 @@ formElement.addEventListener('reset', () => {
   bodyElement.classList.remove('modal-open');
   resetScale();
   document.removeEventListener('keydown', onDocumentKeydown);
-  resetEffectOnImg();
+  resetEffectInImg();
 });
 
 
